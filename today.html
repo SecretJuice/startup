@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nutrition Tracker HTML</title>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header>
+      <h1>Nutrition Tracker<sup>&reg;</sup></h1>
+
+      <!-- Navigation elements -->
+      <nav>
+        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+        <menu>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="today.html">Today</a></li>
+          <li><a href="canIHave.html">Can I Have...?</a></li>
+          <li><a href="add.html">Add Meal</a></li>
+          <li><a href="stats.html">Stats</a></li>
+        </menu>
+      </nav>
+
+      <div>
+        <span>WebSocket based Tip of the Day here!</span>
+      </div>
+
+      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
+      <hr />
+    </header>
+
+    <main>
+      <div class="calories">
+        Calories: <span class="cal-count">1226</span>
+      </div>
+
+      <!-- More formatting with old style HTML -->
+
+      <br />
+
+      <div class="nutrients-graph">
+        <img src="mock-graph.png" alt="This is what this graph is intended to look like">
+        <table>
+          <tr>
+            <td>
+              Protein: <span id="protein-count">56g</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Sugar: <span id="sugar-count">56g</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Fiber: <span id="fiber-count">56g</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Other Carbs: <span id="other-carb-count">56g</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Sat. Fat: <span id="satfat-count">56g</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Other. Fat: <span id="other-fat-count">56g</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="buttons">
+        <a id="canIHave" href="canIHave.html">
+          ❓
+          <span>Can I Have...?</span>
+        </a>
+        <a id="add" href="add.html">
+          ➕
+          <span>Add Meal</span>
+        </a>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <hr />
+      <span class="text-reset">Connor Robb</span>
+      <br />
+      <a href="https://github.com/SecretJuice/startup">GitHub</a>
+    </footer>
+  </body>
+</html>
