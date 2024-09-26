@@ -8,7 +8,7 @@ These are [notes](notes.md) \\(￣︶￣*\\))
 ## Macro Tracking Made Simple...
 Have you ever felt like you needed to make substantial change in your diet, but loathed the thought of staring at nutrition labels each time you sat down to eat or went to the store? 
 
-No more! Nutrition Tracker will... well... track your nutrition! Eat time you eat, simply open up the app, select the food items you consumed, and watch as Nutrition Tracker tallies up calories, protein, fiber, carbohydrates, sugar, fats and other nutrients through the day to help you meet your goals.
+No more! Nutrition Tracker will... well... track your nutrition! Each time you eat, simply open up the app, select the food items you consumed, and watch as Nutrition Tracker tallies up calories, protein, fiber, carbohydrates, sugar, fats and other nutrients through the day to help you meet your goals.
 
 ## Key Features
 - Search food items in the USDA FoodData Central database to obtain their nutrition information.
