@@ -12,3 +12,11 @@ I fixed it by simply using `git commit` in the terminal prior to hitting the syn
 
 ### Elastic IPs
 Didn't know that Elastic IPs were free as long as the instance it's associated with was running. That's new.
+
+## DNS
+
+### Domain Names
+Turns out Namecheap is pretty cheap, and good! Just 4 or so dollars for a .com.
+
+### Subdomains
+Your domain provider should be able to let you configure subdomains. You can even have like a 'sub-subdomain'. With that, I put both startup and simon in sub-subdomains, such as startup.cs260.conrobb.com
