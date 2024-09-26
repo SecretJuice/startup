@@ -3,6 +3,8 @@ Startup assignment for BYU CS 260
 
 These are [notes](notes.md) \\(￣︶￣*\\)) 
 
+These are [deliverable summaries](deliverables.md) (for grading)
+
 # Nutrition Tracker: Startup Spec
 
 ## Macro Tracking Made Simple...
