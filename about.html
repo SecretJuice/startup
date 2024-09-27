@@ -2,50 +2,123 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About</title>
+    <title>Nutrition Tracker HTML</title>
     <link rel="icon" href="favicon.ico" />
   </head>
   <body>
+    <!-- Use header, main, and footer elements to give semantic structure -->
     <header>
-      <h1>Simon<sup>&reg;</sup></h1>
+      <h1>Nutrition Tracker<sup>&reg;</sup></h1>
 
+      <!-- Navigation elements -->
       <nav>
+        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
         <menu>
           <li><a href="index.html">Home</a></li>
-          <li><a href="play.html">Play</a></li>
-          <li><a href="scores.html">Scores</a></li>
+          <li><a href="today.html">Today</a></li>
+          <li><a href="canIHave.html">Can I Have...?</a></li>
+          <li><a href="add.html">Add Meal</a></li>
+          <li><a href="stats.html">Stats</a></li>
           <li><a href="about.html">About</a></li>
         </menu>
       </nav>
 
+      <div>
+        <span>WebSocket based Tip of the Day here!</span>
+      </div>
+
+      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
       <hr />
     </header>
 
     <main>
-      <div id="picture" class="picture-box"><img width="400px" src="placeholder.jpg" alt="random" /></div>
+      <div class="calories">
+        Calories: <span class="cal-count">32</span>
+      </div>
 
-      <p>
-        Simon is a repetitive memory game where you follow the demonstrated color sequence until you make a mistake. The
-        longer the sequence you repeat, the greater your score.
-      </p>
+      <!-- More formatting with old style HTML -->
 
-      <p>
-        The name Simon is a registered trademark of Milton-Bradley. Our use of the name and the game is for non-profit
-        educational use only. No part of this code or program should be used outside of that definition.
-      </p>
+      <br />
 
-      <div id="quote">
-        <div>Words are cheap. Show me the code.</div>
-        <div>- Linus Torvalds</div>
+
+
+      <div class="food-select">
+        <span>This DOESN'T fit your goal!</span>
+        <br>
+        <img src="frenchfries.png" alt="Food image" width="300">
+        <table>
+          <tr>
+            <td>
+              Protein: <span id="protein-count">~</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Sugar: <span id="sugar-count">4.9g</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Fiber: <span id="fiber-count">2g</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Other Carbs: <span id="other-carb-count">7.7g</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Sat. Fat: <span id="satfat-count">~</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Other. Fat: <span id="other-fat-count">~</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="food-search-form">
+          <form method="get" action="today.html">
+            <div>
+              <span>💬</span>
+              <input type="text" placeholder="Food name" value="French Fries"/>
+            </div>
+            <div>
+              <span>🔢</span>
+              <input type="number" placeholder="Amount" value="3.5" />
+            </div>
+            <div>
+                <span>⚖️</span>
+                <select id = "units">
+                    <option value="grams">Grams (g)</option>
+                    <option value="ounces" selected>Ounces (oz)</option>
+                    <option value="fluid-ounces">Fl. Ounces (fl oz)</option>
+                    <option value="cups">Cups</option>
+                </select>
+
+            </div>
+            <button type="submit">Check</button>
+          </form>
+      </div>
+      <br>
+      <div class="common-choices">
+        <span>Common Choices</span>
+        <br>
+        <a href="javascript:void(0)">Pickels</a>
+        <a href="javascript:void(0)">Tuna</a>
+        <a href="javascript:void(0)">Carrots</a>
       </div>
     </main>
 
     <footer>
       <hr />
-      <span class="text-reset">Author Name(s)</span>
+      <span class="text-reset">Connor Robb</span>
       <br />
-      <a href="https://github.com/webprogramming260/simon-html">GitHub</a>
+      <a href="https://github.com/SecretJuice/startup">GitHub</a>
     </footer>
   </body>
 </html>
