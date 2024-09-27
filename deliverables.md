@@ -5,8 +5,9 @@
     - [x] Home/Login
     - [x] Today view
     - [x] Add Meal
-    - [ ] Can I have .. ?
+    - [x] Can I have .. ?
     - [x] Stats
+    - [ ] About 
 - [X] **Links** - Headers in each page have a navbar for the other pages. Today page also has links on the bottom for moving to Can I Have and Add Meal.
 - [ ] **Textual Content**
 - [x] **Place holder for 3rd Party Calls**
