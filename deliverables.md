@@ -11,7 +11,7 @@
 - [ ] **Textual Content**
 - [x] **Place holder for 3rd Party Calls**
     - [x] Food Search
-    - [ ] Grab Nutrition
+    - [x] Grab Nutrition
 - [x] **Application Images** - I included a placeholder image acting as a graph on the today page. It will get replaced with an actual graph displying the days stats. Also a placeholder strawberry.
 - [x] **Login** - Present in the Home/Login page.
 - [x] **DB Data Placeholder**
