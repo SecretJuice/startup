@@ -1,15 +1,15 @@
 # Startup Deliverables
 
 ## HTML
-- [ ] **HTML Page**
+- [x] **HTML Page**
     - [x] Home/Login
     - [x] Today view
     - [x] Add Meal
     - [x] Can I have .. ?
     - [x] Stats
-    - [ ] About 
+    - [x] About 
 - [X] **Links** - Headers in each page have a navbar for the other pages. Today page also has links on the bottom for moving to Can I Have and Add Meal.
-- [ ] **Textual Content**
+- [x] **Textual Content** - About page contains text
 - [x] **Place holder for 3rd Party Calls**
     - [x] Food Search: Add and Can I have pages.
     - [x] Grab Nutrition Add and Can I have pages.
