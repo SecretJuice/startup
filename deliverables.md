@@ -10,8 +10,8 @@
 - [X] **Links** - Headers in each page have a navbar for the other pages. Today page also has links on the bottom for moving to Can I Have and Add Meal.
 - [ ] **Textual Content**
 - [x] **Place holder for 3rd Party Calls**
-    - [x] Food Search
-    - [x] Grab Nutrition
+    - [x] Food Search: Add and Can I have pages.
+    - [x] Grab Nutrition Add and Can I have pages.
 - [x] **Application Images** - I included a placeholder image acting as a graph on the today page. It will get replaced with an actual graph displying the days stats. Also a placeholder strawberry.
 - [x] **Login** - Present in the Home/Login page.
 - [x] **DB Data Placeholder**
