@@ -62,15 +62,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I created a home page, event check-in page, waiting page, about page, and event organizer's page
+- [x] **Proper HTML element usage** - `body`, `nav`, `main`, `header`, and `footer` present on each page
+- [x] **Links** - Links to each page and to GitHub Repository.
 - [x] **Text** - I filled out the About page with textual content
 - [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
 - [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
+- [x] **Login placeholder** - Login form on home page
 - [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **WebSocket placeholder** - I created an invisible Group-Called notification on the waiting page
 
 ## 🚀 CSS deliverable
 
