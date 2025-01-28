@@ -67,9 +67,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Links** - Links to each page and to GitHub Repository.
 - [x] **Text** - I filled out the About page with textual content
 - [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
+- [x] **Images** - Placeholder image in about page and with QR code on event page
 - [x] **Login placeholder** - Login form on home page
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
+- [x] **DB data placeholder** - Groups and group members displayed on event page
 - [x] **WebSocket placeholder** - I created an invisible Group-Called notification on the waiting page
 
 ## 🚀 CSS deliverable
