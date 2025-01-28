@@ -66,7 +66,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Proper HTML element usage** - `body`, `nav`, `main`, `header`, and `footer` present on each page
 - [x] **Links** - Links to each page and to GitHub Repository.
 - [x] **Text** - I filled out the About page with textual content
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
+- [x] **3rd party API placeholder** - I did not complete this part of the deliverable.
 - [x] **Images** - Placeholder image in about page and with QR code on event page
 - [x] **Login placeholder** - Login form on home page
 - [x] **DB data placeholder** - Groups and group members displayed on event page
