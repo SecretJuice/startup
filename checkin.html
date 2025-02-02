@@ -2,24 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Checkin</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <title>Groupify</title>
     <link rel="icon" href="favicon.ico" />
   </head>
   <body>
-    <header>
-      <h1>Groupify<sup>&reg;</sup></h1>
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header class="container">
 
+      <!-- Navigation elements -->
       <nav>
-        <menu>
+        <ul>
+          <li><h2>Groupify</h2></li>
+        </ul>
+        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+        <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="event.html">Create Event</a></li>
           <li><a href="checkin.html">Join Event</a></li>
           <li><a href="waiting.html">Waiting</a></li>
           <li><a href="about.html">About</a></li>
-        </menu>
+        </ul>
       </nav>
 
+      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
       <hr />
     </header>
     <main>
