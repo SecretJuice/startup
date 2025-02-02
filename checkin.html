@@ -32,17 +32,16 @@
       <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
       <hr />
     </header>
-    <main>
-      <h1>Welcome to Groupify</h1>
-      <h2>Enter your event code</h2>
-      <form method="get" action="create.html">
-        <div>
-          <span>#</span>
-          <input type="text" placeholder="Event Code" />
-        </div>
-        <button type="submit">Join</button>
-      </form>
-      <button>Or Scan QR Code</button>
+    <main class="container">
+      <h2>Welcome to Groupify</h2>
+      <form method="get" action="waiting.html">
+          <input name="event_code" type="number" placeholder="Code" />
+          <small>Enter your event code</small>
+          <input type="submit" value="Check-In" />
+        </form>
+      <form method="get" action="waiting.html">
+          <input class="secondary" type="submit" value="Or Scan QR Code" />
+        </form>
     </main>
     <footer class="container">
       <hr />
