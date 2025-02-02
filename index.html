@@ -18,11 +18,10 @@
       <!-- Navigation elements -->
       <nav>
         <ul>
-          <li><h2>Groupify</h2></li>
+          <li><a href="index.html"><h2>Groupify</h2></a></li>
         </ul>
         <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
         <ul>
-          <li><a href="index.html">Home</a></li>
           <li><a href="event.html">Create Event</a></li>
           <li><a href="checkin.html">Join Event</a></li>
           <li><a href="waiting.html">Waiting</a></li>
@@ -38,7 +37,6 @@
       <h1>Welcome to Groupify</h1>
       <form method="get" action="create.html">
           <fieldset>
-              <!-- Input inside label -->
               <label for="username">Username</label>
                 <input
                   name="username"
@@ -46,7 +44,6 @@
                   autocomplete="given-name"
                 />
 
-              <!-- Input outside label -->
               <label for="password">Password</label>
               <input
                 type="password"
@@ -59,11 +56,18 @@
       </form>
     </main>
 
-    <footer>
+    <footer class="container">
       <hr />
-      <span class="text-reset">Connor Robb</span>
-      <br />
-      <a href="https://github.com/SecretJuice/startup">GitHub</a>
+      <nav>
+          <ul>
+              <li>Created by: Connor Robb</li>
+          </ul>
+          <ul>
+              <li>
+                  <a href="https://github.com/SecretJuice/startup">GitHub</a>
+              </li>
+          </ul>
+      </nav>
     </footer>
   </body>
 </html>
