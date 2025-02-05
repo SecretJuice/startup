@@ -12,6 +12,20 @@
     <link rel="icon" href="favicon.ico" />
   </head>
   <body>
+    <dialog open>
+      <article>
+        <header>
+          <button aria-label="Close" rel="prev"></button>
+          <p>
+            <strong>🔔 You're Up!</strong>
+          </p>
+        </header>
+        <p>
+            Your group is being called! Move to the serving area as soon as your ready!
+        </p>
+        <small>This is a placeholder the WebSocket based notification system</small>
+      </article>
+    </dialog>
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header class="container">
 
@@ -33,7 +47,7 @@
       <hr />
     </header>
 
-    <main>
+    <main class="container">
         <!--This is hidden until the websocket based notification system displays it.-->
         <h1 hidden>You're Group is being Called!</h1>
 
