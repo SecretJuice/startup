@@ -76,11 +76,28 @@
       <br/>
       <h3>Group Settings</h3>
       <form>
-          <input type="text" placeholder='option 1'/>
-          <input type="checkbox"/>
-          <input type=submit>Change Settings</input>
+          <fieldset>
+            <label>Text Based Option</label>
+            <input type="text" placeholder='option 1'/>
+            <small>This is a text based option</small>
+            <label>Option Name</label>
+            <select name="fake-option" aria-label="Select an option..." required>
+                  <option selected disabled value="">
+                    Select an option...
+                  </option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                  <option>Option 4</option>
+            </select>
+            <small>This is an option<small>
+          </fieldset>
+          <input type=submit value="Update Settings"/>
       </form>
-      <span>Group Code: 1234</span>
+      <br/>
+      <hr/>
+      <br/>
+      <h3>Group Code: 1234</h3>
       <img src="qrcode.png" alt="QR Code">
     </main>
 
