@@ -2,7 +2,7 @@ import React from 'react';
 
 export function Checkin() {
   return (
-    <main class="container">
+    <main className="container">
       <h2>Welcome to Groupify</h2>
       <br/>
       <form method="get" action="waiting.html">
@@ -11,7 +11,7 @@ export function Checkin() {
           <input type="submit" value="Check-In" />
         </form>
       <form method="get" action="waiting.html">
-          <input class="secondary" type="submit" value="Or Scan QR Code" />
+          <input className="secondary" type="submit" value="Or Scan QR Code" />
         </form>
     </main>
   );

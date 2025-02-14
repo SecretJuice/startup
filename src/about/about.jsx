@@ -2,7 +2,7 @@ import React from 'react';
 
 export function About() {
   return (
-    <main class="container">
+    <main className="container">
       <img width="400px" src="placeholder.jpg" alt="random" />
       <br/>
       <br/>

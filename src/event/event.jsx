@@ -2,12 +2,12 @@ import React from 'react';
 
 export function Event() {
   return (
-    <main class="container">
+    <main className="container">
       <h2>Stake Activity</h2>
       <details>
-          <summary role="button" class="outline contrast">Group A: 6</summary>
-          <div class="container">
-              <button class="primary">Call</button>
+          <summary role="button" className="outline contrast">Group A: 6</summary>
+          <div className="container">
+              <button className="primary">Call</button>
               <ul>
                   <li>Maria</li>
                   <li>Todd</li>
@@ -19,9 +19,9 @@ export function Event() {
           </div>
       </details>
       <details>
-          <summary role="button" class="outline contrast">Group B: 3</summary>
-          <div class="container">
-              <button class="primary">Call</button>
+          <summary role="button" className="outline contrast">Group B: 3</summary>
+          <div className="container">
+              <button className="primary">Call</button>
               <ul>
                   <li>Maria</li>
                   <li>Todd</li>
@@ -30,8 +30,8 @@ export function Event() {
           </div>
       </details>
       <details>
-          <summary role="button" class="outline secondary">Group C: 3</summary>
-          <div class="container">
+          <summary role="button" className="outline secondary">Group C: 3</summary>
+          <div className="container">
               <button disabled>Called</button>
               <ul>
                   <li>Maria</li>
@@ -50,14 +50,14 @@ export function Event() {
             <input type="text" placeholder='option 1'/>
             <small>This is a text based option</small>
             <label>Option Name</label>
-            <select name="fake-option" aria-label="Select an option..." required>
-                  <option selected disabled value="">
+            <select defaultValue="0" name="fake-option" aria-label="Select an option..." required>
+                  <option value="0" disabled>
                     Select an option...
                   </option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                  <option>Option 4</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                  <option value="4">Option 4</option>
             </select>
             <small>This is an option</small>
           </fieldset>

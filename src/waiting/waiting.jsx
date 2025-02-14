@@ -2,7 +2,7 @@ import React from 'react';
 
 export function Waiting() {
   return (
-    <main class="container">
+    <main className="container">
 
       <h2>
         Event Code: 1234
