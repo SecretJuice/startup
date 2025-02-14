@@ -9,3 +9,6 @@ When using the `deployFiles.sh` script, the "domain" flag should include `cs260.
 
 ### PicoCSS container class
 Don't fret when the provided picocss container class doesn't look centered. It's likely just adhereing to it's size steps defined [here](https://picocss.com/docs/container)
+
+### React Routing
+React uses an interesting routing approach. It seems easy to use (at least here at the small scale), I wonder what this would look like at a larger scale.
