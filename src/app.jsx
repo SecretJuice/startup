@@ -8,6 +8,13 @@ import React from 'react';
 import "./app.css"
 
 export default function App() {
+    const [user, setUser] = React.useState(localStorage.getItem("user"))
+
+    function logout() {
+        localStorage.clear("user")
+        setUser(null)
+    }
+
     return <BrowserRouter> 
       <header className="container">
 
@@ -15,19 +22,20 @@ export default function App() {
         <ul>
           <li><NavLink to=""><h3>Groupify</h3></NavLink></li>
         </ul>
-        <ul>
+        {user && <ul>
           <li><NavLink to="event">Create Event</NavLink></li>
           <li><NavLink to="checkin">Join Event</NavLink></li>
           <li><NavLink to="waiting">Waiting Event</NavLink></li>
           <li><NavLink to="about">About</NavLink></li>
-        </ul>
+          <li><NavLink to="" onClick={logout}>{user}</NavLink></li>
+        </ul>}
       </nav>
 
       <hr />
     </header>
 
         <Routes>
-          <Route path='/' element={<Login />} exact />
+          <Route path='/' element={<Login setUser={setUser}/>} />
           <Route path='/event' element={<Event/>} />
           <Route path='/checkin' element={<Checkin/>} />
           <Route path='/waiting' element={<Waiting/>} />

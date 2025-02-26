@@ -1,6 +1,17 @@
 import React from 'react';
 
-export function Login() {
+export function Login({setUser}) {
+  const [text, setText] = React.useState(null)
+
+  function loginUser() {
+      localStorage.setItem("user", text)
+      setUser(text)
+  }
+
+  function textChange(e) {
+      setText(e.target.value)
+  }
+
   return (
     <main className="container">
       <h1>Welcome to Groupify</h1>
@@ -11,6 +22,7 @@ export function Login() {
                   name="username"
                   placeholder="Username"
                   autoComplete="given-name"
+                  onChange={textChange}
                 />
 
               <label htmlFor="password">Password</label>
@@ -21,7 +33,7 @@ export function Login() {
                 autoComplete="password"
               />
           </fieldset>
-        <input type="submit" value="Login"/>
+        <input type="submit" value="Login" onClick={loginUser}/>
       </form>
     </main>
   );
