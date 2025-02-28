@@ -12,3 +12,6 @@ Don't fret when the provided picocss container class doesn't look centered. It's
 
 ### React Routing
 React uses an interesting routing approach. It seems easy to use (at least here at the small scale), I wonder what this would look like at a larger scale.
+
+### React Lists
+React requires a top-level prop called "key" that acts as a unique identifier among the other items of the list. You don't have to use that key prop in the instantiated components, just as you create them
