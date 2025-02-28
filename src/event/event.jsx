@@ -1,45 +1,24 @@
 import React from 'react';
 
 export function Event() {
+  const [openedEvent, setOpenedEvent] = React.useState({
+        name: "Stake Activity",
+        code: 1234,
+        groups: [
+            {id: 0, name: "Group A", called: false, members:["Maria", "Todd", "Frank", "Maria", "Todd", "Frank"]},
+            {id: 1, name: "Group B", called: true, members:["Maria", "Todd", "Frank"]},
+            {id: 2, name: "Group C", called: false, members:["Maria", "Todd", "Frank"]},
+            {id: 3, name: "Group D", called: false, members:["Maria", "Todd", "Frank", "Maria", "Todd", "Frank"]},
+        ]
+  })
+
+
   return (
     <main className="container">
       <h2>Stake Activity</h2>
-      <details>
-          <summary role="button" className="outline contrast">Group A: 6</summary>
-          <div className="container">
-              <button className="primary">Call</button>
-              <ul>
-                  <li>Maria</li>
-                  <li>Todd</li>
-                  <li>Frank</li>
-                  <li>Maria</li>
-                  <li>Todd</li>
-                  <li>Frank</li>
-              </ul>
-          </div>
-      </details>
-      <details>
-          <summary role="button" className="outline contrast">Group B: 3</summary>
-          <div className="container">
-              <button className="primary">Call</button>
-              <ul>
-                  <li>Maria</li>
-                  <li>Todd</li>
-                  <li>Frank</li>
-              </ul>
-          </div>
-      </details>
-      <details>
-          <summary role="button" className="outline secondary">Group C: 3</summary>
-          <div className="container">
-              <button disabled>Called</button>
-              <ul>
-                  <li>Maria</li>
-                  <li>Todd</li>
-                  <li>Frank</li>
-              </ul>
-          </div>
-      </details>
+      {openedEvent.groups.map((group) => (
+            <EventGroup key={group.id} group={group} called={group.called}/>
+      ))}
       <br/>
       <hr/>
       <br/>
@@ -70,4 +49,28 @@ export function Event() {
       <img src="qrcode.png" alt="QR Code"/>
     </main>
   );
+}
+
+
+function EventGroup({group, called}) {
+
+    const [isCalled, setIsCalled] = React.useState(called)
+
+    function call() {
+        console.log(`Calling ${group.name}!`)
+        setIsCalled(true)
+    }
+    return (
+       <details>
+            <summary role="button" className={isCalled ? "secondary outline" : ""}>{group.name}: {group.members.length}</summary>
+            <div className="container">
+                <button disabled={isCalled} onClick={call}>{called ? "Called": "Call"}</button>
+                <ul>
+                {group.members.map((member, i) => (
+                    <li key={i}>{member}</li> 
+                ))}                
+                </ul>
+            </div>
+       </details>
+    )
 }

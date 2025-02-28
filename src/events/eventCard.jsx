@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export function EventCard({id, name, attendees, concluded}) {
+export function EventCard({name, attendees, concluded}) {
 
     const [openedEvent, setOpenedEvent] = React.useState(null)
 
@@ -9,7 +9,7 @@ export function EventCard({id, name, attendees, concluded}) {
 
     function openEvent() {
         if (concluded) return
-        setOpenedEvent(localStorage.getItem(`events-${id}`)) 
+        setOpenedEvent(localStorage.getItem(`event`)) 
         navigate("/event")
     }
 

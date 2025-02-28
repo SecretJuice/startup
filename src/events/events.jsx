@@ -12,10 +12,11 @@ export function Events() {
   return (
     <main className="container">
       <h2>Your Events</h2>
-        {events.map((events) => (
+        {events.map((events, i) => (
             <EventCard name={events.name}
                        attendees={events.attendees}
-                       concluded={events.concluded}/>
+                       concluded={events.concluded}
+                       key={i}/>
         ))}
     </main>
   );
