@@ -15,7 +15,7 @@ export function Login({setUser}) {
   return (
     <main className="container">
       <h1>Welcome to Groupify</h1>
-      <form method="get" action="event">
+      <form method="get" action="events">
           <fieldset>
               <label htmlFor="username">Username</label>
                 <input
@@ -34,6 +34,7 @@ export function Login({setUser}) {
               />
           </fieldset>
         <input type="submit" value="Login" onClick={loginUser}/>
+        <a href="checkin">Or just join an event instead</a>
       </form>
     </main>
   );

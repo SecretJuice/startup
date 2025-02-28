@@ -1,6 +1,19 @@
 import React from 'react';
 
 export function Waiting() {
+  const [open, setOpen] = React.useState(true)
+  function closeModal() {
+    setOpen(false)
+  }
+
+  React.useEffect(() => {
+    if (open) return
+
+    setInterval(() => {
+      setOpen(true) 
+    }, 5000)
+  })
+
   return (
     <main className="container">
 
@@ -19,10 +32,10 @@ export function Waiting() {
         We'll let you know when you're up
       </p>
 
-      <dialog open>
+      <dialog open={open}>
           <article>
               <header>
-                  <button aria-label="Close" rel="prev"></button>
+                  <button aria-label="Close" rel="prev" onClick={closeModal}></button>
                   <p>
                   <strong>🔔 You're Up!</strong>
               </p>

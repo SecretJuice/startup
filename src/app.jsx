@@ -1,11 +1,12 @@
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { Event } from './event/event';
 import { Login } from './login/login';
 import { Waiting } from './waiting/waiting';
 import { Checkin } from './checkin/checkin';
 import { About } from './about/about';
 import React from 'react';
 import "./app.css"
+import { Event } from './event/event';
+import { Events } from './events/events';
 
 export default function App() {
     const [user, setUser] = React.useState(localStorage.getItem("user"))
@@ -23,7 +24,7 @@ export default function App() {
           <li><NavLink to=""><h3>Groupify</h3></NavLink></li>
         </ul>
         {user && <ul>
-          <li><NavLink to="event">Create Event</NavLink></li>
+          <li><NavLink to="events">Your Events</NavLink></li>
           <li><NavLink to="checkin">Join Event</NavLink></li>
           <li><NavLink to="waiting">Waiting Event</NavLink></li>
           <li><NavLink to="about">About</NavLink></li>
@@ -37,6 +38,7 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Login setUser={setUser}/>} />
           <Route path='/event' element={<Event/>} />
+          <Route path='/events' element={<Events/>} />
           <Route path='/checkin' element={<Checkin/>} />
           <Route path='/waiting' element={<Waiting/>} />
           <Route path='/about' element={<About />} />
