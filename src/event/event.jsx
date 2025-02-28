@@ -9,56 +9,64 @@ export function Event() {
             {id: 1, name: "Group B", called: true, members:["Maria", "Todd", "Frank"]},
             {id: 2, name: "Group C", called: false, members:["Maria", "Todd", "Frank"]},
             {id: 3, name: "Group D", called: false, members:["Maria", "Todd", "Frank", "Maria", "Todd", "Frank"]},
-        ]
+        ],
+        settings: {
+            groupStrategy: "automatic",
+            entryMessage: "Welcome to the Stake Activity!",
+        }
   })
+
+    function setSettings(settings) {
+        let newSettings = openedEvent
+        newSettings.settings = settings
+        updateEvent(newSettings)
+    }
+
+    function callGroup(id) {
+        let newEvent = openedEvent
+        newEvent.groups.forEach((group) => {
+            if (group.id === id) {
+                group.called = true
+            }
+        })
+        updateEvent(newEvent)
+    }
+
+    function updateEvent(event) {
+        console.log(event)
+        setOpenedEvent(event)
+    }
 
 
   return (
     <main className="container">
-      <h2>Stake Activity</h2>
+      <h2>{openedEvent.name}</h2>
       {openedEvent.groups.map((group) => (
-            <EventGroup key={group.id} group={group} called={group.called}/>
+            <EventGroup key={group.id} group={group} callGroup={callGroup} called={group.called}/>
       ))}
       <br/>
       <hr/>
       <br/>
       <h3>Event Settings</h3>
-      <form>
-          <fieldset>
-            <label>Text Based Option</label>
-            <input type="text" placeholder='option 1'/>
-            <small>This is a text based option</small>
-            <label>Option Name</label>
-            <select defaultValue="0" name="fake-option" aria-label="Select an option..." required>
-                  <option value="0" disabled>
-                    Select an option...
-                  </option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
-                  <option value="4">Option 4</option>
-            </select>
-            <small>This is an option</small>
-          </fieldset>
-          <input type="submit" value="Update Settings"/>
-      </form>
+      <EventSettings settings={openedEvent.settings} setSettings={setSettings}/>
       <br/>
       <hr/>
       <br/>
-      <h3>Group Code: 1234</h3>
+      <h3>Group Code: {openedEvent.code}</h3>
       <img src="qrcode.png" alt="QR Code"/>
     </main>
   );
 }
 
 
-function EventGroup({group, called}) {
+function EventGroup({group, called, callGroup}) {
 
     const [isCalled, setIsCalled] = React.useState(called)
 
     function call() {
         console.log(`Calling ${group.name}!`)
         setIsCalled(true)
+        callGroup(group.id)
     }
     return (
        <details>
@@ -72,5 +80,47 @@ function EventGroup({group, called}) {
                 </ul>
             </div>
        </details>
+    )
+}
+
+function EventSettings({settings, setSettings}) {
+    const [groupStrategy, setGroupStrategy] = React.useState(settings.groupStrategy)
+    const [entryMessage, setEntryMessage] = React.useState(settings.entryMessage)
+
+    function handleMessageChange(e) {
+        setEntryMessage(e.target.value)
+    }
+
+    function handleGroupStratChange(e) {
+        setGroupStrategy(e.target.value)
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        setSettings({
+            groupStrategy: groupStrategy,
+            entryMessage: entryMessage,
+        })
+    }
+
+    return (
+      <form onSubmit={handleSubmit}>
+          <fieldset>
+            <label>Entry Message</label>
+            <input type="text" placeholder='"Welcome..."' defaultValue={entryMessage} onChange={handleMessageChange}/>
+            <small>Entry message will be displayed to patrons</small>
+            <label>Group Making Strategy</label>
+            <select defaultValue={groupStrategy} name="fake-option" aria-label="Select an option..." required onChange={handleGroupStratChange}>
+                  <option value="0" disabled>
+                    Select an option...
+                  </option>
+                  <option value="manual">Manual</option>
+                  <option value="automatic">Automatic</option>
+                  <option value="teams">Teams</option>
+            </select>
+            <small>How would you like to control how groups are formed?</small>
+          </fieldset>
+          <input type="submit" value="Update Settings"/>
+      </form>
     )
 }
