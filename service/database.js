@@ -17,8 +17,8 @@ const userCollection = db.collection('user');
   }
 })();
 
-function getUser(email) {
-  return userCollection.findOne({ email: email });
+function getUser(username) {
+  return userCollection.findOne({ username: username });
 }
 
 function getUserByToken(token) {
@@ -30,18 +30,18 @@ async function addUser(user) {
 }
 
 async function updateUser(user) {
-  await userCollection.updateOne({ email: user.email }, { $set: user });
+  await userCollection.updateOne({ username: user.username}, { $set: user });
 }
 
-function getHighScores() {
-  const query = { score: { $gt: 0, $lt: 900 } };
-  const options = {
-    sort: { score: -1 },
-    limit: 10,
-  };
-  const cursor = scoreCollection.find(query, options);
-  return cursor.toArray();
-}
+//function getHighScores() {
+//  const query = { score: { $gt: 0, $lt: 900 } };
+//  const options = {
+//    sort: { score: -1 },
+//    limit: 10,
+//  };
+//  const cursor = scoreCollection.find(query, options);
+//  return cursor.toArray();
+//}
 
 module.exports = {
   getUser,
