@@ -1,6 +1,7 @@
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
+const logger = require('express-requests-logger')
 const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
@@ -11,6 +12,16 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(logger({
+    request: {
+        excludeHeaders: [`*`],
+        excludeBody: [`*`]
+    },
+    response: {
+        excludeHeaders: [`*`],
+        excludeBody: [`*`]
+    }
+}));
 
 app.use(express.static('public'));
 
@@ -29,7 +40,8 @@ apiRouter.post('/auth/create', async (req, res) => {
 });
 
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = await findUser('email', req.body.email);
+  console.log("RECEIVED REQUEST")
+  const user = await findUser('username', req.body.username);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
@@ -83,7 +95,7 @@ async function createUser(username, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
   const user = {
-    email: email,
+    username: username,
     password: passwordHash,
     token: uuid.v4(),
   };
@@ -95,6 +107,7 @@ async function createUser(username, password) {
 async function findUser(field, value) {
   if (!value) return null;
 
+  console.log(value)
   if (field === 'token') {
     return DB.getUserByToken(value);
   }
