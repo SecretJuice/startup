@@ -1,32 +1,39 @@
 import React from "react";
 
-import { Unauthenticated } from './unauthenticated';
-import { Authenticated } from './authenticated';
-import { AuthState } from './authState';
+import { Unauthenticated } from "./unauthenticated";
+import { Authenticated } from "./authenticated";
+import { AuthState } from "./authState";
 
 import { MessageDialog } from "./messageDialog";
 
 export function Login({ userName, authState, onAuthChange }) {
-  return (
-    <main className='container'>
-      <div>
-        {authState !== AuthState.Unknown && <h1>Welcome to Simon</h1>}
-        {authState === AuthState.Authenticated && (
-          <Authenticated userName={userName} onLogout={() => onAuthChange(userName, AuthState.Unauthenticated)} />
-        )}
-        {authState === AuthState.Unauthenticated && (
-          <Unauthenticated
-            userName={userName}
-            onLogin={(loginUserName) => {
-              onAuthChange(loginUserName, AuthState.Authenticated);
-            }}
-          />
-        )}
-      </div>
-    </main>
-  );
+    return (
+        <main className="container">
+            <div>
+                {authState !== AuthState.Unknown && <h1>Welcome to Simon</h1>}
+                {authState === AuthState.Authenticated && (
+                    <Authenticated
+                        userName={userName}
+                        onLogout={() =>
+                            onAuthChange(userName, AuthState.Unauthenticated)
+                        }
+                    />
+                )}
+                {authState === AuthState.Unauthenticated && (
+                    <Unauthenticated
+                        userName={userName}
+                        onLogin={(loginUserName) => {
+                            onAuthChange(
+                                loginUserName,
+                                AuthState.Authenticated,
+                            );
+                        }}
+                    />
+                )}
+            </div>
+        </main>
+    );
 }
-
 
 export function Login(props) {
     const [username, setUsername] = React.useState(null);
@@ -34,12 +41,12 @@ export function Login(props) {
     const [displayError, setDisplayError] = React.useState(null);
 
     async function loginUser(evt) {
-        evt.preventDefault()
+        evt.preventDefault();
         loginOrCreate(`/api/auth/login`);
     }
 
     async function createUser(evt) {
-        evt.preventDefault()
+        evt.preventDefault();
         loginOrCreate(`/api/auth/create`);
     }
 
@@ -86,8 +93,18 @@ export function Login(props) {
                         }}
                     />
                 </fieldset>
-                <input className="primary" type="submit" value="Login" onClick={(e) => loginUser(e)} />
-                <input className="secondary" type="submit" value="Create" onClick={(e) => createUser(e)} />
+                <input
+                    className="primary"
+                    type="submit"
+                    value="Login"
+                    onClick={(e) => loginUser(e)}
+                />
+                <input
+                    className="secondary"
+                    type="submit"
+                    value="Create"
+                    onClick={(e) => createUser(e)}
+                />
                 <a href="checkin">Or just join an event instead</a>
             </form>
             <MessageDialog
