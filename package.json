@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "lint": "eslint --fix --ext .js,.jsx ."
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\""
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "homepage": "https://github.com/SecretJuice/startup#readme",
   "devDependencies": {
     "globals": "^16.0.0",
+    "prettier": "^3.5.3",
     "vite": "^6.1.0"
   },
   "dependencies": {

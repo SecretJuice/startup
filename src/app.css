@@ -1,8 +1,9 @@
-html,body {
+html,
+body {
     height: 100vh;
 }
 
-body>footer {
- position: fixed;
-  bottom: 0;
+body > footer {
+    position: fixed;
+    bottom: 0;
 }

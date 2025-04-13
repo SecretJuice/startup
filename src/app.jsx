@@ -1,66 +1,91 @@
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { Login } from './login/login';
-import { Waiting } from './waiting/waiting';
-import { Checkin } from './checkin/checkin';
-import { About } from './about/about';
-import React from 'react';
-import "./app.css"
-import { Event } from './event/event';
-import { Events } from './events/events';
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import { Login } from "./login/login";
+import { Waiting } from "./waiting/waiting";
+import { Checkin } from "./checkin/checkin";
+import { About } from "./about/about";
+import React from "react";
+import "./app.css";
+import { Event } from "./event/event";
+import { Events } from "./events/events";
 
 export default function App() {
-    const [user, setUser] = React.useState(localStorage.getItem("user"))
+    const [user, setUser] = React.useState(localStorage.getItem("user"));
 
     function logout() {
-        localStorage.clear("user")
-        setUser(null)
+        localStorage.clear("user");
+        setUser(null);
     }
 
-    return <BrowserRouter> 
-      <header className="container">
+    return (
+        <BrowserRouter>
+            <header className="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <NavLink to="">
+                                <h3>Groupify</h3>
+                            </NavLink>
+                        </li>
+                    </ul>
+                    {user && (
+                        <ul>
+                            <li>
+                                <NavLink to="events">Your Events</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="checkin">Join Event</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="waiting">Waiting Event</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="about">About</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="" onClick={logout}>
+                                    {user}
+                                </NavLink>
+                            </li>
+                        </ul>
+                    )}
+                </nav>
 
-      <nav>
-        <ul>
-          <li><NavLink to=""><h3>Groupify</h3></NavLink></li>
-        </ul>
-        {user && <ul>
-          <li><NavLink to="events">Your Events</NavLink></li>
-          <li><NavLink to="checkin">Join Event</NavLink></li>
-          <li><NavLink to="waiting">Waiting Event</NavLink></li>
-          <li><NavLink to="about">About</NavLink></li>
-          <li><NavLink to="" onClick={logout}>{user}</NavLink></li>
-        </ul>}
-      </nav>
+                <hr />
+            </header>
 
-      <hr />
-    </header>
+            <Routes>
+                <Route path="/" element={<Login setUser={setUser} />} />
+                <Route path="/event" element={<Event />} />
+                <Route path="/events" element={<Events />} />
+                <Route path="/checkin" element={<Checkin />} />
+                <Route path="/waiting" element={<Waiting />} />
+                <Route path="/about" element={<About />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
 
-        <Routes>
-          <Route path='/' element={<Login setUser={setUser}/>} />
-          <Route path='/event' element={<Event/>} />
-          <Route path='/events' element={<Events/>} />
-          <Route path='/checkin' element={<Checkin/>} />
-          <Route path='/waiting' element={<Waiting/>} />
-          <Route path='/about' element={<About />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-
-    <footer className="container">
-      <hr />
-      <nav>
-          <ul>
-              <li>Created by: Connor Robb</li>
-          </ul>
-          <ul>
-              <li>
-                  <a href="https://github.com/SecretJuice/startup">GitHub</a>
-              </li>
-          </ul>
-      </nav>
-    </footer>
-    </BrowserRouter>
+            <footer className="container">
+                <hr />
+                <nav>
+                    <ul>
+                        <li>Created by: Connor Robb</li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="https://github.com/SecretJuice/startup">
+                                GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </footer>
+        </BrowserRouter>
+    );
 }
 
 function NotFound() {
-  return <main className="container">404: Return to sender. Address unknown.</main>;
+    return (
+        <main className="container">
+            404: Return to sender. Address unknown.
+        </main>
+    );
 }

@@ -1,51 +1,50 @@
-import React from 'react';
+import React from "react";
 
 export function Waiting() {
-  const [open, setOpen] = React.useState(true)
-  function closeModal() {
-    setOpen(false)
-  }
+    const [open, setOpen] = React.useState(true);
+    function closeModal() {
+        setOpen(false);
+    }
 
-  React.useEffect(() => {
-    if (open) return
+    React.useEffect(() => {
+        if (open) return;
 
-    setInterval(() => {
-      setOpen(true) 
-    }, 5000)
-  })
+        setInterval(() => {
+            setOpen(true);
+        }, 5000);
+    });
 
-  return (
-    <main className="container">
+    return (
+        <main className="container">
+            <h2>Event Code: 1234</h2>
+            <h3>Group: B</h3>
 
-      <h2>
-        Event Code: 1234
-      </h2>
-      <h3>
-        Group: B
-      </h3>
+            <p>Welcome to the stake activity!</p>
 
-      <p>
-        Welcome to the stake activity!
-      </p>
+            <p>We'll let you know when you're up</p>
 
-      <p>
-        We'll let you know when you're up
-      </p>
-
-      <dialog open={open}>
-          <article>
-              <header>
-                  <button aria-label="Close" rel="prev" onClick={closeModal}></button>
-                  <p>
-                  <strong>🔔 You're Up!</strong>
-              </p>
-          </header>
-              <p>
-              Your group is being called! Move to the serving area as soon as your ready!
-              </p>
-              <small>This is a placeholder for the WebSocket based notification system</small>
-          </article>
-      </dialog>
-    </main>
-  );
+            <dialog open={open}>
+                <article>
+                    <header>
+                        <button
+                            aria-label="Close"
+                            rel="prev"
+                            onClick={closeModal}
+                        ></button>
+                        <p>
+                            <strong>🔔 You're Up!</strong>
+                        </p>
+                    </header>
+                    <p>
+                        Your group is being called! Move to the serving area as
+                        soon as your ready!
+                    </p>
+                    <small>
+                        This is a placeholder for the WebSocket based
+                        notification system
+                    </small>
+                </article>
+            </dialog>
+        </main>
+    );
 }
