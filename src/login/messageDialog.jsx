@@ -10,7 +10,7 @@ export function MessageDialog(props) {
     //  </Modal>
     //);
     return (
-        <dialog open={!props.message == null}>
+        <dialog open={props.message != null}>
             <article>
                 <header>
                     <button

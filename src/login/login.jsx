@@ -1,44 +1,14 @@
 import React from "react";
 
-import { Unauthenticated } from "./unauthenticated";
-import { Authenticated } from "./authenticated";
-import { AuthState } from "./authState";
-
 import { MessageDialog } from "./messageDialog";
-
-export function Login({ userName, authState, onAuthChange }) {
-    return (
-        <main className="container">
-            <div>
-                {authState !== AuthState.Unknown && <h1>Welcome to Simon</h1>}
-                {authState === AuthState.Authenticated && (
-                    <Authenticated
-                        userName={userName}
-                        onLogout={() =>
-                            onAuthChange(userName, AuthState.Unauthenticated)
-                        }
-                    />
-                )}
-                {authState === AuthState.Unauthenticated && (
-                    <Unauthenticated
-                        userName={userName}
-                        onLogin={(loginUserName) => {
-                            onAuthChange(
-                                loginUserName,
-                                AuthState.Authenticated,
-                            );
-                        }}
-                    />
-                )}
-            </div>
-        </main>
-    );
-}
+import { useNavigate } from "react-router-dom";
 
 export function Login(props) {
     const [username, setUsername] = React.useState(null);
     const [password, setPassword] = React.useState(null);
     const [displayError, setDisplayError] = React.useState(null);
+
+    const navigate = useNavigate();
 
     async function loginUser(evt) {
         evt.preventDefault();
@@ -61,6 +31,7 @@ export function Login(props) {
         if (response?.status === 200) {
             localStorage.setItem("user", username);
             props.onLogin(username);
+            navigate("/events")
         } else {
             const body = await response.json();
             setDisplayError(`⚠ Error: ${body.msg}`);

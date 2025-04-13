@@ -16,6 +16,11 @@ export default function App() {
         setUser(null);
     }
 
+    function login(username) {
+        localStorage.setItem("user", username)
+        setUser(username)
+    }
+
     return (
         <BrowserRouter>
             <header className="container">
@@ -54,7 +59,7 @@ export default function App() {
             </header>
 
             <Routes>
-                <Route path="/" element={<Login setUser={setUser} />} />
+                <Route path="/" element={<Login onLogin={login} />} />
                 <Route path="/event" element={<Event />} />
                 <Route path="/events" element={<Events />} />
                 <Route path="/checkin" element={<Checkin />} />

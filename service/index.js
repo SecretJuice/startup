@@ -31,6 +31,10 @@ const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 apiRouter.post("/auth/create", async (req, res) => {
+    if (req.body.username == null || req.body.password == null) {
+        res.status(400).send({ msg: "Bad Request" }) 
+        return
+    }
     if (await findUser("username", req.body.username)) {
         res.status(409).send({ msg: "Existing user" });
     } else {
@@ -42,7 +46,10 @@ apiRouter.post("/auth/create", async (req, res) => {
 });
 
 apiRouter.post("/auth/login", async (req, res) => {
-    console.log("RECEIVED REQUEST");
+    if (req.body.username == null || req.body.password == null) {
+        res.status(400).send({ msg: "Bad Request" }) 
+        return
+    }
     const user = await findUser("username", req.body.username);
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
