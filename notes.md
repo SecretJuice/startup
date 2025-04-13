@@ -15,3 +15,6 @@ React uses an interesting routing approach. It seems easy to use (at least here 
 
 ### React Lists
 React requires a top-level prop called "key" that acts as a unique identifier among the other items of the list. You don't have to use that key prop in the instantiated components, just as you create them
+
+### Forms in React
+When creating forms in which you make your own requests and functionality, it's important that you start with calling `event.preventDefault`. Otherwise unwanted and weird behavior like page reloading and cancelled requests occured.

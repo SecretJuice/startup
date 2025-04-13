@@ -17,7 +17,7 @@ export function MessageDialog(props) {
                         aria-label="Close"
                         rel="prev"
                         onClick={props.onHide}
-                    ></button>
+                    />
                     <p>
                         <strong>{props.header}</strong>
                     </p>

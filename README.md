@@ -102,17 +102,17 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Located in ./service
+- [x] **Static middleware for frontend** - Used in ./service/index.js
+- [ ] **Calls to third party endpoints** - Generates QR Codes from the frontend
+- [ ] **Backend service endpoints** - Authentication, Group Management and Joining
 - [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
 
 ## 🚀 DB/Login deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **User registration** - I did not complete this part of the deliverable.
+- [ ] **User registration** - 
 - [ ] **User login and logout** - I did not complete this part of the deliverable.
 - [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
 - [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
