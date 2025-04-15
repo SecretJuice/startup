@@ -4,10 +4,23 @@ export function Event() {
     const [openedEvent, setOpenedEvent] = React.useState({});
     const [loading, setLoading] = React.useState(true);
 
-    function setSettings(settings) {
-        let newSettings = openedEvent;
-        newSettings.settings = settings;
-        updateEvent(newSettings);
+    async function setSettings(settings) {
+        let newEvent = openedEvent;
+        newEvent.settings = settings;
+
+        const res = await fetch("/api/events/" + newEvent.code + "/settings", {
+            method: "put",
+            body: JSON.stringify(settings),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+        });
+
+        if (res.ok) {
+            updateEvent(newEvent);
+        } else {
+            console.error("COULD NOT UPDATE SETTINGS");
+        }
     }
 
     function callGroup(id) {
@@ -49,6 +62,8 @@ export function Event() {
             <h2>{openedEvent.name}</h2>
             {loading ? (
                 <h2>Loading...</h2>
+            ) : openedEvent.groups.length === 0 ? (
+                <h3>No Groups Yet</h3>
             ) : (
                 openedEvent.groups.map((group) => (
                     <EventGroup
@@ -61,7 +76,6 @@ export function Event() {
             )}
             <br />
             <hr />
-            <br />
             <h3>Event Settings</h3>
             {loading ? (
                 <h2>Loading...</h2>
@@ -73,7 +87,6 @@ export function Event() {
             )}
             <br />
             <hr />
-            <br />
             <h3>Group Code: {openedEvent.code}</h3>
             <img
                 src={

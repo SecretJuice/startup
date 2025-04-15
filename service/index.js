@@ -109,14 +109,25 @@ apiRouter.get("/events/:code", userAuthMw, async (req, res) => {
     }
 });
 
-//const anonAuthMw = async (req, res, next) => {
-//    const user = await findUser("token", req.cookies[authCookieName]);
-//    if (user) {
-//        next();
-//    } else {
-//        res.status(401).send({ msg: "Unauthorized" });
-//    }
-//};
+apiRouter.put("/events/:code/settings", userAuthMw, async (req, res) => {
+    const code = req.params.code;
+    const event = await DB.getEventByCode(req.user, code);
+    if (event !== null) {
+        await DB.updateSettingsByCode(req.user, code, req.body);
+        res.status(204).end();
+    } else {
+        res.status(404).send({ msg: "Not Found" });
+    }
+});
+
+apiRouter.put("/events/:code/join", async (req, res) => {
+    const joinInfo = await DB.joinEventWithCode(req.body.name, req.params.code);
+    if (joinInfo === null) {
+        res.status(404).send({ msg: "Not Found" });
+    } else {
+        res.status(202).send(joinInfo);
+    }
+});
 
 // Error Handler
 app.use(function (err, req, res, next) {

@@ -65,6 +65,56 @@ async function getEventByCode(user, code) {
     return eventCollection.findOne({ user: user.username, code: code });
 }
 
+async function updateSettingsByCode(user, code, settings) {
+    eventCollection.updateOne(
+        { user: user.username, code: code },
+        { $set: { settings: settings } },
+    );
+}
+
+async function joinEventWithCode(name, code) {
+    const event = await eventCollection.findOne({
+        code: code,
+    });
+    if (event == null) {
+        return null;
+    }
+    let groupCap = event.settings.groupCapacity;
+    let added = false;
+    for (let group of event.groups) {
+        if (group.members.length < groupCap) {
+            group.members.push(name);
+            added = true;
+            eventCollection.updateOne(
+                { code: code },
+                {
+                    $push: { "groups.$[elem].members": name },
+                },
+                {
+                    arrayFilters: [{ "elem.name": group.name }],
+                },
+            );
+            return {
+                groupName: group.name,
+                message: event.settings.entryMessage,
+                name: name,
+            };
+        }
+    }
+
+    let groupCount = event.groups.length;
+    let newGroup = {
+        name: "Group " + (groupCount + 1),
+        members: [name],
+    };
+    eventCollection.updateOne({ code: code }, { $push: { groups: newGroup } });
+    return {
+        groupName: newGroup.name,
+        message: event.settings.entryMessage,
+        name: name,
+    };
+}
+
 module.exports = {
     getUser,
     getUserByToken,
@@ -73,4 +123,6 @@ module.exports = {
     createEvent,
     getEventsByUser,
     getEventByCode,
+    updateSettingsByCode,
+    joinEventWithCode,
 };
