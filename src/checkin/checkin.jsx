@@ -1,9 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export function Checkin() {
+    const [searchParams] = useSearchParams();
+    const eventCode = searchParams.get("code");
     const [name, setName] = React.useState("");
-    const [code, setCode] = React.useState(0);
+    const [code, setCode] = React.useState(eventCode);
 
     const navigate = useNavigate();
 
@@ -31,6 +33,7 @@ export function Checkin() {
     return (
         <main className="container">
             <h2>Welcome to Groupify</h2>
+            {eventCode !== null ? <h3>Event Code: {eventCode}</h3> : null}
             <br />
             <form>
                 <input
@@ -42,24 +45,30 @@ export function Checkin() {
                     }}
                 />
                 <small>Enter your name</small>
-                <input
-                    name="event_code"
-                    type="number"
-                    placeholder="Code"
-                    onChange={(e) => {
-                        setCode(e.target.value);
-                    }}
-                />
-                <small>Enter your event code</small>
+                {eventCode === null ? (
+                    <fieldset>
+                        <input
+                            name="event_code"
+                            type="number"
+                            placeholder="Code"
+                            onChange={(e) => {
+                                setCode(e.target.value);
+                            }}
+                        />
+                        <small>Enter your event code</small>
+                    </fieldset>
+                ) : null}
                 <input type="submit" value="Check-In" onClick={joinEvent} />
             </form>
-            <form>
-                <input
-                    className="secondary"
-                    type="submit"
-                    value="Or Scan QR Code"
-                />
-            </form>
+            {eventCode === null ? (
+                <form>
+                    <input
+                        className="secondary"
+                        type="submit"
+                        value="Or Scan QR Code"
+                    />
+                </form>
+            ) : null}
         </main>
     );
 }
