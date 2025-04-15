@@ -31,7 +31,7 @@ export function Login(props) {
         if (response?.status === 200) {
             localStorage.setItem("user", username);
             props.onLogin(username);
-            navigate("/events")
+            navigate("/events");
         } else {
             const body = await response.json();
             setDisplayError(`⚠ Error: ${body.msg}`);

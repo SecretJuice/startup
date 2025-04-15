@@ -33,18 +33,17 @@ app.use(`/api`, apiRouter);
 const userAuthMw = async (req, res, next) => {
     const user = await findUser("token", req.cookies[authCookieName]);
     if (user) {
-        req.user = user
+        req.user = user;
         next();
     } else {
         res.status(401).send({ msg: "Unauthorized" });
     }
 };
 
-
 apiRouter.post("/auth/create", async (req, res) => {
     if (req.body.username == null || req.body.password == null) {
-        res.status(400).send({ msg: "Bad Request" }) 
-        return
+        res.status(400).send({ msg: "Bad Request" });
+        return;
     }
     if (await findUser("username", req.body.username)) {
         res.status(409).send({ msg: "Existing user" });
@@ -58,8 +57,8 @@ apiRouter.post("/auth/create", async (req, res) => {
 
 apiRouter.post("/auth/login", async (req, res) => {
     if (req.body.username == null || req.body.password == null) {
-        res.status(400).send({ msg: "Bad Request" }) 
-        return
+        res.status(400).send({ msg: "Bad Request" });
+        return;
     }
     const user = await findUser("username", req.body.username);
     if (user) {
@@ -89,26 +88,26 @@ apiRouter.post("/events", userAuthMw, async (req, res) => {
         name: req.body.name,
         groupCapacity: req.body.groupCapacity,
         concluded: false,
-    }
-    await DB.createEvent(req.user, event)
-    res.status(201).end()
-})
+    };
+    await DB.createEvent(req.user, event);
+    res.status(201).end();
+});
 
 apiRouter.get("/events", userAuthMw, async (req, res) => {
-    const events = await DB.getEventsByUser(req.user)
-    console.log(events)
-    res.status(200).send(events)
-})
+    const events = await DB.getEventsByUser(req.user);
+    console.log(events);
+    res.status(200).send(events);
+});
 
 apiRouter.get("/events/:code", userAuthMw, async (req, res) => {
-    const code = req.params.code
-    const event = await DB.getEventByCode(req.user, code)
+    const code = req.params.code;
+    const event = await DB.getEventByCode(req.user, code);
     if (event !== null) {
-        res.status(200).send(event)
+        res.status(200).send(event);
     } else {
-        res.status(404).send({ msg: "Not Found"})
+        res.status(404).send({ msg: "Not Found" });
     }
-})
+});
 
 //const anonAuthMw = async (req, res, next) => {
 //    const user = await findUser("token", req.cookies[authCookieName]);

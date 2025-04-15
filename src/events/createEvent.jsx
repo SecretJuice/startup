@@ -11,7 +11,10 @@ export function CreateEvent(props) {
         evt.preventDefault();
         const response = await fetch("/api/events", {
             method: "post",
-            body: JSON.stringify({ name: eventName, groupCapacity: groupCapacity}),
+            body: JSON.stringify({
+                name: eventName,
+                groupCapacity: groupCapacity,
+            }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             },

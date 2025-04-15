@@ -17,8 +17,8 @@ export default function App() {
     }
 
     function login(username) {
-        localStorage.setItem("user", username)
-        setUser(username)
+        localStorage.setItem("user", username);
+        setUser(username);
     }
 
     return (

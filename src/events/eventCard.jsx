@@ -2,18 +2,17 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export function EventCard({ event }) {
-
     const navigate = useNavigate();
 
     function openEvent() {
         if (event.concluded) return;
-        localStorage.setItem("event", event.code)
-        console.log(localStorage.getItem("event"))
+        localStorage.setItem("event", event.code);
+        console.log(localStorage.getItem("event"));
         navigate("/event");
     }
 
     function getAttendeeCount(groupifyEvent) {
-        return 0
+        return 0;
     }
 
     return (

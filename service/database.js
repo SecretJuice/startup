@@ -38,7 +38,7 @@ async function updateUser(user) {
 
 // Generates random 5 digit code.
 function generateCode() {
-  return Math.floor(10000 + Math.random() * 90000).toString();
+    return Math.floor(10000 + Math.random() * 90000).toString();
 }
 
 async function createEvent(user, groupifyEvent) {
@@ -50,19 +50,19 @@ async function createEvent(user, groupifyEvent) {
         groups: [],
         settings: {
             groupCapacity: groupifyEvent.groupCapacity,
-            entryMessage: "Welcome to "+groupifyEvent.name,
+            entryMessage: "Welcome to " + groupifyEvent.name,
         },
-    }
-    await eventCollection.insertOne(newEvent)
+    };
+    await eventCollection.insertOne(newEvent);
 }
 
 async function getEventsByUser(user) {
-    const cursor = eventCollection.find({ user: user.username })
-    return await cursor.toArray()
+    const cursor = eventCollection.find({ user: user.username });
+    return await cursor.toArray();
 }
 
 async function getEventByCode(user, code) {
-    return eventCollection.findOne({user: user.username, code: code})
+    return eventCollection.findOne({ user: user.username, code: code });
 }
 
 module.exports = {
