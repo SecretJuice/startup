@@ -1,40 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export function Event() {
-    const [openedEvent, setOpenedEvent] = React.useState({
-        name: "Stake Activity",
-        code: 1234,
-        groups: [
-            {
-                id: 0,
-                name: "Group A",
-                called: false,
-                members: ["Maria", "Todd", "Frank", "Maria", "Todd", "Frank"],
-            },
-            {
-                id: 1,
-                name: "Group B",
-                called: true,
-                members: ["Maria", "Todd", "Frank"],
-            },
-            {
-                id: 2,
-                name: "Group C",
-                called: false,
-                members: ["Maria", "Todd", "Frank"],
-            },
-            {
-                id: 3,
-                name: "Group D",
-                called: false,
-                members: ["Maria", "Todd", "Frank", "Maria", "Todd", "Frank"],
-            },
-        ],
-        settings: {
-            groupStrategy: "automatic",
-            entryMessage: "Welcome to the Stake Activity!",
-        },
-    });
+    const [openedEvent, setOpenedEvent] = React.useState( {} );
+    const [loading, setLoading] = React.useState(true);
 
     function setSettings(settings) {
         let newSettings = openedEvent;
@@ -57,30 +25,58 @@ export function Event() {
         setOpenedEvent(event);
     }
 
+    useEffect(() => {
+        console.log("please")
+
+        const code = localStorage.getItem("event")
+
+        const getEvent = async () => {
+            const res = await fetch("/api/events/"+code)
+
+            if (res.ok) {
+                
+                const body = await res.json()
+                setOpenedEvent(body)
+                setLoading(false)
+            } else {
+                console.error("COULD NOT GET EVENT: "+res.status) 
+            }
+        }
+        getEvent()
+    }, [])
+
     return (
         <main className="container">
             <h2>{openedEvent.name}</h2>
-            {openedEvent.groups.map((group) => (
-                <EventGroup
+            {loading ? (
+            <h2>Loading...</h2>
+            ) : (
+                (openedEvent.groups.map((group) => (
+                    <EventGroup
                     key={group.id}
                     group={group}
                     callGroup={callGroup}
                     called={group.called}
-                />
-            ))}
+                    />
+                )))
+            )}            
             <br />
             <hr />
             <br />
             <h3>Event Settings</h3>
-            <EventSettings
+            {loading ? (
+            <h2>Loading...</h2>
+            ) : (
+                <EventSettings
                 settings={openedEvent.settings}
                 setSettings={setSettings}
-            />
+                />
+            )}
             <br />
             <hr />
             <br />
             <h3>Group Code: {openedEvent.code}</h3>
-            <img src="qrcode.png" alt="QR Code" />
+            <img src={"https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://startup.cs260.conrobb.com/api/join/"+openedEvent.code} alt="QR Code" />
         </main>
     );
 }
@@ -116,25 +112,25 @@ function EventGroup({ group, called, callGroup }) {
 }
 
 function EventSettings({ settings, setSettings }) {
-    const [groupStrategy, setGroupStrategy] = React.useState(
-        settings.groupStrategy,
-    );
     const [entryMessage, setEntryMessage] = React.useState(
         settings.entryMessage,
+    );
+    const [groupCapacity, setGroupCapacity] = React.useState(
+        settings.groupCapacity,
     );
 
     function handleMessageChange(e) {
         setEntryMessage(e.target.value);
     }
 
-    function handleGroupStratChange(e) {
-        setGroupStrategy(e.target.value);
+    function handleGroupCapChange(e) {
+        setGroupCapacity(e.target.value);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
         setSettings({
-            groupStrategy: groupStrategy,
+            groupCapacity: groupCapacity,
             entryMessage: entryMessage,
         });
     }
@@ -150,23 +146,15 @@ function EventSettings({ settings, setSettings }) {
                     onChange={handleMessageChange}
                 />
                 <small>Entry message will be displayed to patrons</small>
-                <label>Group Making Strategy</label>
-                <select
-                    defaultValue={groupStrategy}
-                    name="fake-option"
-                    aria-label="Select an option..."
-                    required
-                    onChange={handleGroupStratChange}
-                >
-                    <option value="0" disabled>
-                        Select an option...
-                    </option>
-                    <option value="manual">Manual</option>
-                    <option value="automatic">Automatic</option>
-                    <option value="teams">Teams</option>
-                </select>
+                <label>Group Capacity</label> 
+                <input
+                    type="number"
+                    placeholder="e.g 5"
+                    defaultValue={groupCapacity}
+                    onChange={handleGroupCapChange}
+                />
                 <small>
-                    How would you like to control how groups are formed?
+                    How many should fit in each group?
                 </small>
             </fieldset>
             <input type="submit" value="Update Settings" />

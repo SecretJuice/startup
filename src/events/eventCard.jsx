@@ -1,15 +1,19 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export function EventCard({ name, attendees, concluded }) {
-    const [openedEvent, setOpenedEvent] = React.useState(null);
+export function EventCard({ event }) {
 
     const navigate = useNavigate();
 
     function openEvent() {
-        if (concluded) return;
-        setOpenedEvent(localStorage.getItem(`event`));
+        if (event.concluded) return;
+        localStorage.setItem("event", event.code)
+        console.log(localStorage.getItem("event"))
         navigate("/event");
+    }
+
+    function getAttendeeCount(groupifyEvent) {
+        return 0
     }
 
     return (
@@ -17,17 +21,17 @@ export function EventCard({ name, attendees, concluded }) {
             <nav>
                 <ul>
                     <li>
-                        <strong>{name}</strong>
+                        <strong>{event.name}</strong>
                     </li>
                 </ul>
                 <ul>
-                    <li>{attendees} attendees</li>
+                    <li>{getAttendeeCount(event)} attendees</li>
                     <li>
                         <button
-                            className={`${concluded ? "secondary" : "disabled"}`}
+                            className={`${event.concluded ? "secondary" : "disabled"}`}
                             onClick={openEvent}
                         >
-                            {!concluded ? "Manage" : "Concluded"}
+                            {!event.concluded ? "Manage" : "Concluded"}
                         </button>
                     </li>
                 </ul>

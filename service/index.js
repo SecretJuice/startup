@@ -30,6 +30,17 @@ app.use(express.static("public"));
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+const userAuthMw = async (req, res, next) => {
+    const user = await findUser("token", req.cookies[authCookieName]);
+    if (user) {
+        req.user = user
+        next();
+    } else {
+        res.status(401).send({ msg: "Unauthorized" });
+    }
+};
+
+
 apiRouter.post("/auth/create", async (req, res) => {
     if (req.body.username == null || req.body.password == null) {
         res.status(400).send({ msg: "Bad Request" }) 
@@ -73,26 +84,44 @@ apiRouter.delete("/auth/logout", async (req, res) => {
     res.status(204).end();
 });
 
-const userAuthMw = async (req, res, next) => {
-    const user = await findUser("token", req.cookies[authCookieName]);
-    if (user) {
-        next();
-    } else {
-        res.status(401).send({ msg: "Unauthorized" });
+apiRouter.post("/events", userAuthMw, async (req, res) => {
+    const event = {
+        name: req.body.name,
+        groupCapacity: req.body.groupCapacity,
+        concluded: false,
     }
-};
-const anonAuthMw = async (req, res, next) => {
-    const user = await findUser("token", req.cookies[authCookieName]);
-    if (user) {
-        next();
+    await DB.createEvent(req.user, event)
+    res.status(201).end()
+})
+
+apiRouter.get("/events", userAuthMw, async (req, res) => {
+    const events = await DB.getEventsByUser(req.user)
+    console.log(events)
+    res.status(200).send(events)
+})
+
+apiRouter.get("/events/:code", userAuthMw, async (req, res) => {
+    const code = req.params.code
+    const event = await DB.getEventByCode(req.user, code)
+    if (event !== null) {
+        res.status(200).send(event)
     } else {
-        res.status(401).send({ msg: "Unauthorized" });
+        res.status(404).send({ msg: "Not Found"})
     }
-};
+})
+
+//const anonAuthMw = async (req, res, next) => {
+//    const user = await findUser("token", req.cookies[authCookieName]);
+//    if (user) {
+//        next();
+//    } else {
+//        res.status(401).send({ msg: "Unauthorized" });
+//    }
+//};
 
 // Error Handler
 app.use(function (err, req, res, next) {
-    res.status(500).send({ type: err.name, message: err.message });
+    res.status(500).send({ type: err.name, msg: err.message });
 });
 
 // Return the application's default page if the path is unknown
