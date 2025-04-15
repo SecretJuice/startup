@@ -104,7 +104,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **Node.js/Express HTTP service** - Located in ./service
 - [x] **Static middleware for frontend** - Used in ./service/index.js
-- [ ] **Calls to third party endpoints** - Generates QR Codes from the frontend
+- [x] **Calls to third party endpoints** - Generates QR Codes from the frontend
 - [ ] **Backend service endpoints** - Authentication, Group Management and Joining
 - [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
 
@@ -112,11 +112,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **User registration** - 
-- [ ] **User login and logout** - I did not complete this part of the deliverable.
+- [x] **User registration** - Users create accounts with usernames and passwords
+- [x] **User login and logout** - Users login and out with a login page
 - [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Restricts functionality based on authentication** - I did not complete this part of the deliverable.
+- [x] **Stores credentials in MongoDB** - Stores salted hashed passwords in user document
+- [x] **Restricts functionality based on authentication** - User Authentication Middleware enables document-level authentication
 
 ## 🚀 WebSocket deliverable
 
