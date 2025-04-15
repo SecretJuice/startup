@@ -105,8 +105,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **Node.js/Express HTTP service** - Located in ./service
 - [x] **Static middleware for frontend** - Used in ./service/index.js
 - [x] **Calls to third party endpoints** - Generates QR Codes from the frontend
-- [ ] **Backend service endpoints** - Authentication, Group Management and Joining
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+- [x] **Backend service endpoints** - Authentication, Group Management and Joining (TODO: Group Calling, Event Ending)
+- [x] **Frontend calls service endpoints** - Yes, through the whole app
 
 ## 🚀 DB/Login deliverable
 
@@ -114,7 +114,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **User registration** - Users create accounts with usernames and passwords
 - [x] **User login and logout** - Users login and out with a login page
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Stores data in MongoDB** - User, Event, and Group data stored in MongoDB
 - [x] **Stores credentials in MongoDB** - Stores salted hashed passwords in user document
 - [x] **Restricts functionality based on authentication** - User Authentication Middleware enables document-level authentication
 

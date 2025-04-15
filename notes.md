@@ -18,3 +18,6 @@ React requires a top-level prop called "key" that acts as a unique identifier am
 
 ### Forms in React
 When creating forms in which you make your own requests and functionality, it's important that you start with calling `event.preventDefault`. Otherwise unwanted and weird behavior like page reloading and cancelled requests occured.
+
+### Working with Arrays in MongoDB
+If your document has an array property, you can do list operations directly on the property in mongo without replacing the property.
