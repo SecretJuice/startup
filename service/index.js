@@ -129,6 +129,10 @@ apiRouter.put("/events/:code/join", async (req, res) => {
     }
 });
 
+apiRouter.put("/events/:code/groups/:name", async (req, res) => {
+    await DB.callEventGroup(req.params.code, req.params.name, req.user)
+});
+
 // Error Handler
 app.use(function (err, req, res, next) {
     res.status(500).send({ type: err.name, msg: err.message });

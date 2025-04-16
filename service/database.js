@@ -106,6 +106,7 @@ async function joinEventWithCode(name, code) {
     let newGroup = {
         name: "Group " + (groupCount + 1),
         members: [name],
+        called: false,
     };
     eventCollection.updateOne({ code: code }, { $push: { groups: newGroup } });
     return {

@@ -39,8 +39,6 @@ export function Event() {
     }
 
     useEffect(() => {
-        console.log("please");
-
         const code = localStorage.getItem("event");
 
         const getEvent = async () => {
